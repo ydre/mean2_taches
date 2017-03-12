@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost/mean2_taches')
   .catch((err) => console.error(err));	  
 
 
-app.use(express.static(path.join(__dirname, 'public')));  
+app.use(express.static(path.join(__dirname, 'dist')));  
 
 app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json()); 
@@ -28,7 +28,7 @@ app.use('/api/v1', index);
 
 // APPLI
 app.get('*', function (req, res) {
-    res.sendFile(__dirname +'/public/index.html'); 
+    res.sendFile(__dirname +'/dist/index.html'); 
 });
 
 app.listen(port, () => {
