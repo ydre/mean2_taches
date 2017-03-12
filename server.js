@@ -24,7 +24,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // routing
 const index = require('./server/routes');
-app.use('/api/v1', index);
+app.use('/api', index);
 
 // APPLI
 app.get('*', function (req, res) {

@@ -1,0 +1,27 @@
+
+	<form>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Ajouter une tâche" autofocus #tacheContenu required minlength="2">
+			<br>
+			<button (click)="addTache($event, tacheContenu)" class="btn btn-primary btn-block">Ajouter</button>
+		</div>
+	</form>
+
+<div class="tache-liste" >
+	<div *ngFor="let tache of taches" >
+		<div class="col-md-9 text-center" *ngIf=!tache.editForm>
+			<p>{{tache.texte}}</p>
+		</div>
+		
+			<input type="text" *ngIf="tache.editForm" [value]="tache.texte"
+			(keypress)="updateTacheTexte($event, tache)">
+
+		<div class="col-md-3">
+
+		<button *ngIf="!tache.editForm" class="btn btn-warning" (click)="editMode(tache, true)" >Editer</button>
+			
+		<button (click)="deleteTache(tache)" class="btn btn-danger">X</button>
+		</div>
+	</div>
+</div>
+
